@@ -13,10 +13,13 @@ public:
     Forme(float x, float y);
     Forme(const Forme &p);
     ~Forme();
-    
+
+    virtual float perimetre(void);
+    virtual float surface(void);
+
     // Surcharge opéateurs
-    virtual Forme operator+=(const Forme &B);
-    virtual string operator<<(const Forme &B);
+    virtual Forme &operator+=(const Point &A);
+    friend ostream &operator<<(ostream &os, const Forme &forme);
 };
 
 #endif
