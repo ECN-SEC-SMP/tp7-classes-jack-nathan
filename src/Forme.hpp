@@ -5,11 +5,18 @@
 class Forme
 {
 private:
-    Point pts;
+    Point* pts;
 
 public:
-    Forme();
+    Forme(void);
+    Forme(Point* p);
+    Forme(float x, float y);
+    Forme(const Forme &p);
+    ~Forme();
     
+    // Surcharge opéateurs
+    virtual Forme operator+=(const Forme &B);
+    virtual string operator<<(const Forme &B);
 };
 
 #endif
