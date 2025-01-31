@@ -60,14 +60,14 @@ public:
      *
      * @return float - Abscisse
      */
-    float getX();
+    float getX() const;
 
     /**
      * @brief Récupère la valeur d'ordonnée du point
      *
      * @return float - Ordonnée
      */
-    float getY();
+    float getY() const;
 
     /**
      * @brief Défini la valeur d'abscisse du point

@@ -18,12 +18,12 @@ Point::Point(const Point &point)
     this->y = point.y;
 }
 
-float Point::getX()
+float Point::getX() const
 {
     return this->x;
 }
 
-float Point::getY()
+float Point::getY() const
 {
     return this->y;
 }
