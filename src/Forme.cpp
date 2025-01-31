@@ -29,3 +29,9 @@ Forme::~Forme() {
     delete this->pts;;
 }
 
+Forme& Forme::operator+=(const Point &A) {
+    this->pts->setX(A.getX());
+    this->pts->setY(A.getY());
+    return *this;
+}
+

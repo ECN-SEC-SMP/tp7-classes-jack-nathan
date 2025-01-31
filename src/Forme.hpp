@@ -18,7 +18,7 @@ public:
     virtual float surface(void);
 
     // Surcharge opéateurs
-    virtual Forme &operator+=(const Point &A);
+    Forme &operator+=(const Point &A);
     friend ostream &operator<<(ostream &os, const Forme &forme);
 };
 
