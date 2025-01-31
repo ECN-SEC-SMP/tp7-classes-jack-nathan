@@ -61,13 +61,6 @@ Point &Point::operator+=(const Point &pts)
     return *this;
 }
 
-Point operator+(const Point &pts_1, const Point &pts_2)
-{
-    Point newPts = pts_1;
-    newPts += pts_2;
-    return newPts;
-}
-
 ostream &operator<<(ostream &os, const Point &pts)
 {
     os << "Point(" << pts.x << ", " << pts.y << ")";
