@@ -14,8 +14,8 @@ public:
     Forme(const Forme &p);
     ~Forme();
 
-    virtual float perimetre(void);
-    virtual float surface(void);
+    virtual float perimetre(void) = 0;
+    virtual float surface(void) = 0;
 
     // Surcharge opéateurs
     Forme &operator+=(const Point &A);
