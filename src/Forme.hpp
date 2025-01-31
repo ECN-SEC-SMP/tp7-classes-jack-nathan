@@ -14,6 +14,7 @@ public:
     Forme(const Forme &p);
     ~Forme();
 
+    Point* getPoint() const;
     virtual float perimetre(void) = 0;
     virtual float surface(void) = 0;
 
