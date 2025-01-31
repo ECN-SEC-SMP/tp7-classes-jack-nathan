@@ -1,22 +1,19 @@
 #include "Rectangle.hpp"
 
-Rectangle::Rectangle(void)
+Rectangle::Rectangle(void) : Forme()
 {
-    Rectangle::Forme();
     this->largeur = 0;
     this->longueur = 0;
 }
 
-Rectangle::Rectangle(float longeur, float largeur)
+Rectangle::Rectangle(float longeur, float largeur) : Forme()
 {
-    Rectangle::Forme();
     this->longueur = longueur;
     this->largeur = largeur;
 }
 
-Rectangle::Rectangle(float longeur, float largeur, float ptsX, float ptsY)
+Rectangle::Rectangle(float longeur, float largeur, float ptsX, float ptsY) : Forme(ptsX, ptsY)
 {
-    Rectangle::Forme(ptsX, ptsY);
     this->longueur = longueur;
     this->largeur = largeur;
 }
