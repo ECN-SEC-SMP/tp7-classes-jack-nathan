@@ -6,7 +6,7 @@ using namespace std;
 
 // Test des points
 void test_pointConstructeur(void);
-void test_pointTranslater(void);
+void test_pointTranslater(void);    
 void test_pointOperateurPlusEgale(void);
 void test_pointOperateurCout(void);
 

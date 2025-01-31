@@ -2,14 +2,25 @@
 #define _RECTANGLE_HPP_
 #include "Forme.hpp"
 
-class Rectangle
+class Rectangle : public Forme
 {
 private:
-    Point pts;
+    float longueur;
+    float largeur;
 
 public:
-    Rectangle();
-    
+    Rectangle(void);
+    Rectangle(float longeur, float largeur);
+    Rectangle(float longeur, float largeur, float ptsX, float ptsY);
+    ~Rectangle();
+
+    float getLongeur();
+    float getLargeur();
+    void setLongeur(float longeur);
+    void setLargeur(float largeur);
+    float perimetre();
+    float surface();
+    friend ostream &operator<<(ostream &os, const Rectangle &forme);
 };
 
 #endif

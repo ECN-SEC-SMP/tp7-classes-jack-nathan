@@ -1,22 +1,26 @@
 #include "Forme.hpp"
 
-Forme::Forme(void) {
+Forme::Forme(void)
+{
     this->pts = new Point;
     this->pts->setX(0);
     this->pts->setY(0);
 }
 
-Forme::Forme(Point* p) {
+Forme::Forme(Point *p)
+{
     this->pts = p;
 }
 
-Forme::Forme(float x, float y) {
+Forme::Forme(float x, float y)
+{
     this->pts = new Point;
     this->pts->setX(x);
     this->pts->setY(y);
 }
 
-Forme::Forme(const Forme &p) {
+Forme::Forme(const Forme &p)
+{
     // Creation d'un nouveau point car si on supprime la forme copie
     // on veut pouvoir garder le point copie
     // Donc on n'enregistre pas l'addr du point de la forme copie
@@ -25,8 +29,9 @@ Forme::Forme(const Forme &p) {
     this->pts->setY(p.pts->getY());
 }
 
-Forme::~Forme() {
-    delete this->pts;;
+Forme::~Forme()
+{
+    delete this->pts;
 }
 
 Forme& Forme::operator+=(const Point &A) {
@@ -35,3 +40,7 @@ Forme& Forme::operator+=(const Point &A) {
     return *this;
 }
 
+Point *Forme::getPoint() const
+{
+    return this->pts;
+}
