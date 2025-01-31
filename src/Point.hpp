@@ -93,15 +93,6 @@ public:
     Point &operator+=(const Point &pts);
 
     /**
-     * @brief Surchage de l'opérateur +
-     * 
-     * @param pts_1 Référence du point 1
-     * @param pts_2 Référence du point 2
-     * @return Retourne un point, la somme des deux points
-     */
-    friend Point operator+(const Point &pts_1, const Point &pts_2);
-
-    /**
      * @brief Surcharge de l'opérateur <<
      * 
      * @param os outputstream
