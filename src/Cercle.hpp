@@ -6,10 +6,18 @@
 class Cercle : public Forme
 {
 private:
-    /* data */
+    float rayon;
 public:
-    Cercle(/* args */) {}
-    ~Cercle() {}
+    Cercle(void);
+    Cercle(float x, float y, float rayon);
+    Cercle(Point* p, float rayon);
+    Cercle(Cercle &c);
+    ~Cercle();
+
+    float perimetre(void);
+    float surface(void);
+
+    friend ostream &operator<<(ostream &os, const Forme &forme);
 };
 
 
