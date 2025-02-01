@@ -44,3 +44,4 @@ Point *Forme::getPoint() const
 {
     return this->pts;
 }
+

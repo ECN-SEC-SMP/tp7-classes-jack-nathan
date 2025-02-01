@@ -1,3 +1,4 @@
+# Définition des variables
 GPP = g++ -Wall
 SRC = ./src
 BIN = ./bin
@@ -6,38 +7,38 @@ all: start
 
 # La cible "deleteAll" est exécutée en tapant la commande "make deleteAll"
 deleteAll :
-	@echo suppression du contenu du répertoire ../bin
+	@echo Suppression du contenu du répertoire $(BIN)
 	rm -f $(BIN)/*.o $(BIN)/*.bin
 
 # La cible "compilPoint" est exécutée en tapant la commande "make compilPoint"
 compilPoint :
 	@echo Compilation Point
-	$(GPP) $(SRC)/Point.cpp -o $(BIN)/Point.o -c
+	$(GPP) -c $(SRC)/Point.cpp -o $(BIN)/Point.o
 
 # La cible "compilForme" est exécutée en tapant la commande "make compilForme"
 compilForme : compilPoint
-	@echo Compilation compilForme
-	$(GPP) $(SRC)/Forme.cpp $(BIN)/Point.o -o $(BIN)/Forme.o -c
+	@echo Compilation Forme
+	$(GPP) -c $(SRC)/Forme.cpp -o $(BIN)/Forme.o
 
 # La cible "compilCercle" est exécutée en tapant la commande "make compilCercle"
 compilCercle : compilForme
-	@echo Compilation compilCercle
-	$(GPP) $(SRC)/Cercle.cpp $(BIN)/Forme.o -o $(BIN)/Cercle.o -c
+	@echo Compilation Cercle
+	$(GPP) -c $(SRC)/Cercle.cpp -o $(BIN)/Cercle.o
 
 # La cible "compilRectangle" est exécutée en tapant la commande "make compilRectangle"
 compilRectangle : compilForme
-	@echo Compilation compilRectangle
-	$(GPP) $(SRC)/Rectangle.cpp $(BIN)/Forme.o -o $(BIN)/Rectangle.o -c
+	@echo Compilation Rectangle
+	$(GPP) -c $(SRC)/Rectangle.cpp -o $(BIN)/Rectangle.o
 
 # La cible "compilCarre" est exécutée en tapant la commande "make compilCarre"
 compilCarre : compilRectangle
-	@echo Compilation compilCarre
-	$(GPP) $(SRC)/Carre.cpp $(BIN)/Rectangle.o -o $(BIN)/Carre.o -c
+	@echo Compilation Carré
+	$(GPP) -c $(SRC)/Carre.cpp -o $(BIN)/Carre.o
 
 # La cible "compilMain" est exécutée en tapant la commande "make compilMain"
 compilMain : deleteAll compilCarre compilCercle
 	@echo Compilation de main
-	$(GPP) ./main.cpp $(BIN)/Forme.o $(BIN)/Point.o -o $(BIN)/main.bin
+	$(GPP) ./main.cpp $(BIN)/Cercle.o $(BIN)/Carre.o $(BIN)/Rectangle.o $(BIN)/Forme.o $(BIN)/Point.o -o $(BIN)/main.bin
 
 # La cible "launchMain" est exécutée en tapant la commande "make launchMain"
 launchMain :

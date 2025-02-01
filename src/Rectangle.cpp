@@ -1,4 +1,5 @@
 #include "Rectangle.hpp"
+#include <stdexcept>
 
 Rectangle::Rectangle(void) : Forme()
 {
@@ -6,61 +7,88 @@ Rectangle::Rectangle(void) : Forme()
     this->longueur = 0;
 }
 
-Rectangle::Rectangle(float longeur, float largeur) : Forme()
+Rectangle::Rectangle(float longueur, float largeur) : Forme()
 {
+    if (largeur <= 0 || longueur <= 0)
+    {
+        throw invalid_argument("La longueur et la largeur doivent être supérieur à 0");
+    }
     this->longueur = longueur;
     this->largeur = largeur;
 }
 
-Rectangle::Rectangle(float longeur, float largeur, float ptsX, float ptsY) : Forme(ptsX, ptsY)
+Rectangle::Rectangle(float longueur, float largeur, float ptsX, float ptsY) : Forme(ptsX, ptsY)
 {
+    if (largeur <= 0 || longueur <= 0)
+    {
+        throw invalid_argument("La longueur et la largeur doivent être supérieur à 0");
+    }
     this->longueur = longueur;
     this->largeur = largeur;
-}
-
-Rectangle::~Rectangle()
-{
-    Forme::~Forme();
 }
 
 void Rectangle::setLargeur(float largeur)
 {
-    if (largeur >= 0)
+    if (largeur > 0)
     {
         this->largeur = largeur;
     }
-}
-
-void Rectangle::setLongeur(float longeur)
-{
-    if (longueur >= 0)
+    else
     {
-        this->longueur = longueur;
+        throw invalid_argument("La largeur doit être supérieur à 0");
     }
 }
 
-float Rectangle::getLargeur()
+void Rectangle::setLongeur(float longueur)
+{
+    if (longueur > 0)
+    {
+        this->longueur = longueur;
+    }
+    else
+    {
+        throw invalid_argument("La longueur doit être supérieur à 0");
+    }
+}
+
+float Rectangle::getLargeur() const
 {
     return this->largeur;
 }
 
-float Rectangle::getLongeur()
+float Rectangle::getLongeur() const
 {
     return this->longueur;
 }
 
 float Rectangle::perimetre()
 {
-    return (this->longueur * 2) + (this->largeur * 2);
+    if (this->longueur <= 0)
+    {
+        throw runtime_error("La longueur doit être supérieur à 0");
+    }
+    if (this->largeur <= 0)
+    {
+        throw runtime_error("La largeur doit être supérieur à 0");
+    }
+    return (this->longueur + this->largeur) * 2;
 }
 
 float Rectangle::surface()
 {
+    if (this->longueur <= 0)
+    {
+        throw runtime_error("La longueur doit être supérieur à 0");
+    }
+    if (this->largeur <= 0)
+    {
+        throw runtime_error("La largeur doit être supérieur à 0");
+    }
+
     return this->largeur * this->longueur;
 }
-
 ostream &operator<<(ostream &os, const Rectangle &rect)
 {
-    os << "Rectangle:\n\t - Centré au" << rect.getPoint() << "\n\t- Longueur" << rect.longueur << "\n\t- Largeur " << rect.largeur;
+    os << "Rectangle:\n\t- Centré au " << *rect.getPoint() << "\n\t- Longueur " << rect.longueur << "\n\t- Largeur " << rect.largeur;
     return os;
 }
