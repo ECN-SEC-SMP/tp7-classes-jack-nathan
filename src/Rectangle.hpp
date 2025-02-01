@@ -12,6 +12,7 @@ public:
     Rectangle(void);
     Rectangle(float longeur, float largeur);
     Rectangle(float longeur, float largeur, float ptsX, float ptsY);
+    Rectangle(const Rectangle &rect);
 
     float getLongeur() const;
     float getLargeur() const;

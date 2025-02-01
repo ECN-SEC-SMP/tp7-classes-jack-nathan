@@ -9,6 +9,8 @@ public:
     Carre();
     Carre(float taille);
     Carre(float taille, float ptsX, float ptsY);
+    Carre(const Carre &carre);
+
     void setTaille(float taille);
 
     friend ostream &operator<<(ostream &os, const Carre &carre);

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <assert.h>
+#include <vector>
 
 #include "src/Point.hpp"
 #include "src/Carre.hpp"
@@ -7,6 +8,17 @@
 #include "src/Cercle.hpp"
 
 using namespace std;
+
+int surfaceTotal(vector<Forme *> list)
+{
+    int surfaceTotal = 0;
+    for (Forme *forme : list)
+    {
+        surfaceTotal += forme->surface();
+    }
+
+    return surfaceTotal;
+}
 
 // Test des points
 void test_pointConstructeur(void);
@@ -27,6 +39,16 @@ void test_carreConstructeur(void);
 void test_carreSetTaille(void);
 void test_carreOperateurCout(void);
 
+// Test des cercles
+void test_cercleConstructeur(void);
+void test_cercleSetRayon(void);
+void test_cerclePerimetre(void);
+void test_cercleSurface(void);
+void test_cercleOperateurCout(void);
+
+// Test des fonctions sur un vecteurs
+void test_surfaceTotal(void);
+
 int main()
 {
     // cout << "-- Tests de la classe Point --" << endl;
@@ -43,10 +65,25 @@ int main()
     // test_rectangleSurface();
     // test_rectangleOperateurCout();
 
-    cout << "-- Tests de la classe Carre --" << endl;
-    test_carreConstructeur();
-    test_carreSetTaille();
-    test_carreOperateurCout();
+    // cout << "-- Tests de la classe Carre --" << endl;
+    // test_carreConstructeur();
+    // test_carreSetTaille();
+    // test_carreOperateurCout();
+
+    // cout << "-- Tests de la classe Cercle --" << endl;
+    // test_carreConstructeur();
+    // test_carreSetTaille();
+    // test_carreOperateurCout();
+
+    // cout << "-- Tests de la classe cercle --" << endl;
+    // test_cercleConstructeur();
+    // test_cercleSetRayon();
+    // test_cerclePerimetre();
+    // test_cercleSurface();
+    // test_cercleOperateurCout();
+
+    // cout << "-- Tests liste de formes --" << endl;
+    // test_surfaceTotal();
     return 0;
 }
 
@@ -148,6 +185,7 @@ void test_rectangleConstructeur()
     Rectangle rect_1 = Rectangle();
     Rectangle rect_2 = Rectangle(3, 4);
     Rectangle rect_3 = Rectangle(3, 4, 2, 3);
+    Rectangle rect_7 = rect_3;
 
     try
     {
@@ -174,6 +212,11 @@ void test_rectangleConstructeur()
     assert(rect_3.getLargeur() == 4);
     assert(rect_3.getPoint()->getX() == 2);
     assert(rect_3.getPoint()->getY() == 3);
+
+    assert(rect_7.getLongeur() == 3);
+    assert(rect_7.getLargeur() == 4);
+    assert(rect_7.getPoint()->getX() == 2);
+    assert(rect_7.getPoint()->getY() == 3);
     cout << "test_rectangleConstructeur():\t:\tOK" << endl;
 }
 
@@ -283,6 +326,7 @@ void test_carreConstructeur()
     Carre carre_1 = Carre();
     Carre carre_2 = Carre(3);
     Carre carre_3 = Carre(7, 4, 5);
+    Carre carre_4 = carre_3;
 
     assert(carre_1.getLargeur() == 0);
     assert(carre_1.getLongeur() == 0);
@@ -296,6 +340,10 @@ void test_carreConstructeur()
     assert(carre_3.getLargeur() == 7);
     assert(carre_3.getPoint()->getX() == 4);
     assert(carre_3.getPoint()->getY() == 5);
+
+    assert(carre_4.getLargeur() == 7);
+    assert(carre_4.getPoint()->getX() == 4);
+    assert(carre_4.getPoint()->getY() == 5);
     cout << "test_carreConstructeur():\t:\tOK" << endl;
 }
 
@@ -338,4 +386,146 @@ void test_carreOperateurCout()
     cout << carre_1 << endl;
     cout << carre_2 << endl;
     cout << carre_3 << endl;
+}
+
+void test_cercleConstructeur()
+{
+    Cercle cercle_1 = Cercle();        // Initialisation cercle par défaut
+    Cercle cercle_3 = Cercle(1);       // Initialisation cercle de rayon 1
+    Cercle cercle_4 = Cercle(2, 1, 1); // Initialisation cercle de rayon 2 au point (1, 1)
+    Cercle cercle_5 = cercle_4;        // Copie de cercle 4
+    try
+    {
+        Cercle cercle_2 = Cercle(0);
+    }
+    catch (const exception &e)
+    {
+        cerr << "Exception caught: " << e.what() << endl;
+    }
+
+    try
+    {
+        Cercle cercle_2 = Cercle(-1);
+    }
+    catch (const exception &e)
+    {
+        cerr << "Exception caught: " << e.what() << endl;
+    }
+
+    // Initialisation cercle par défaut
+    assert(cercle_1.getRayon() == 0);
+    assert(cercle_1.getPoint()->getX() == 0);
+    assert(cercle_1.getPoint()->getY() == 0);
+
+    // Initialisation cercle de rayon 1
+    assert(cercle_3.getRayon() == 1);
+    assert(cercle_3.getPoint()->getX() == 0);
+    assert(cercle_3.getPoint()->getY() == 0);
+
+    // Initialisation cercle de rayon 2 au point (1, 1)
+    assert(cercle_4.getRayon() == 2);
+    assert(cercle_4.getPoint()->getX() == 1);
+    assert(cercle_4.getPoint()->getY() == 1);
+
+    // Copie de cercle_4
+    assert(cercle_5.getRayon() == 2);
+    assert(cercle_5.getPoint()->getX() == 1);
+    assert(cercle_5.getPoint()->getY() == 1);
+
+    cout << "test_cercleConstructeur():\t\t:\tOK" << endl;
+}
+void test_cercleSetRayon()
+{
+    Cercle cercle_1 = Cercle();  // Initialisation cercle par défaut
+    Cercle cercle_2 = Cercle(1); // Initialisation cercle de rayon 1
+
+    assert(cercle_1.getRayon() == 0);
+
+    cercle_1.setRayon(10);
+
+    assert(cercle_1.getRayon() == 10);
+
+    try
+    {
+        cercle_2.setRayon(0);
+    }
+    catch (const exception &e)
+    {
+        cerr << "Exception caught: " << e.what() << endl;
+    }
+
+    try
+    {
+        cercle_2.setRayon(-1);
+    }
+    catch (const exception &e)
+    {
+        cerr << "Exception caught: " << e.what() << endl;
+    }
+
+    cout << "test_cercleSetRayon():\t\t:\tOK" << endl;
+}
+
+void test_cerclePerimetre()
+{
+    Cercle cercle_1 = Cercle();        // Initialisation cercle par défaut
+    Cercle cercle_2 = Cercle(1);       // Initialisation cercle de rayon 1
+    Cercle cercle_3 = Cercle(2, 1, 1); // Initialisation cercle de rayon 2 au point (1, 1)
+
+    try
+    {
+        cercle_1.perimetre();
+    }
+    catch (const exception &e)
+    {
+        cerr << "Exception caught: " << e.what() << endl;
+    }
+
+    assert(cercle_2.perimetre() == (float)6.28);
+    assert(cercle_3.perimetre() == (float)12.57);
+    cout << "test_cerclePerimetre():\t\t:\tOK" << endl;
+}
+
+void test_cercleSurface()
+{
+    Cercle cercle_1 = Cercle();        // Initialisation cercle par défaut
+    Cercle cercle_2 = Cercle(1);       // Initialisation cercle de rayon 1
+    Cercle cercle_3 = Cercle(4, 1, 1); // Initialisation cercle de rayon 2 au point (1, 1)
+
+    try
+    {
+        cercle_1.perimetre();
+    }
+    catch (const exception &e)
+    {
+        cerr << "Exception caught: " << e.what() << endl;
+    }
+
+    assert(cercle_2.surface() == (float)3.14);
+    assert(cercle_3.surface() == (float)50.27);
+    cout << "test_cercleSurface():\t\t:\tOK" << endl;
+}
+
+void test_cercleOperateurCout()
+{
+    Cercle cercle_1 = Cercle(1);       // Initialisation cercle de rayon 1
+    Cercle cercle_2 = Cercle(4, 1, 1); // Initialisation cercle de rayon 2 au point (1, 1)
+
+    cout << "Surcharge opérateur <<" << endl;
+    cout << cercle_1 << endl;
+    cout << cercle_2 << endl;
+}
+
+void test_surfaceTotal()
+{
+
+    vector<Forme *> vec = vector<Forme *>();
+    Rectangle *rect_2 = new Rectangle(3, 3);
+    Rectangle *rect_3 = new Rectangle(7, 5);
+
+    vec.push_back(rect_2);
+    vec.push_back(rect_3);
+
+    assert(surfaceTotal(vec) == 44);
+    cout << "GG" << endl;
 }

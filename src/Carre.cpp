@@ -12,6 +12,11 @@ Carre::Carre(float taille, float ptsX, float ptsY) : Rectangle(taille, taille, p
 {
 }
 
+Carre::Carre(const Carre &carre) : Rectangle(carre.getLongeur(), carre.getLargeur(), carre.getPoint()->getX(),
+                                            carre.getPoint()->getY())
+{
+}
+
 void Carre::setTaille(float taille)
 {
     this->setLargeur(taille);

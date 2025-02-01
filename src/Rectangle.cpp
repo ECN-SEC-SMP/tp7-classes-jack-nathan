@@ -27,6 +27,12 @@ Rectangle::Rectangle(float longueur, float largeur, float ptsX, float ptsY) : Fo
     this->largeur = largeur;
 }
 
+Rectangle::Rectangle(const Rectangle &rect) : Forme(rect.getPoint()->getX(), rect.getPoint()->getY())
+{
+    this->largeur = rect.largeur;
+    this->longueur = rect.longueur;
+}
+
 void Rectangle::setLargeur(float largeur)
 {
     if (largeur > 0)
