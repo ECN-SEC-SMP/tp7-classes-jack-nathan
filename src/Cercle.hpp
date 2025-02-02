@@ -17,7 +17,9 @@ public:
     float perimetre(void);
     float surface(void);
 
-    friend ostream &operator<<(ostream &os, const Forme &forme);
+    float getRayon(void) const;
+
+    friend ostream &operator<<(ostream &os, const Cercle &cercle);
 };
 
 

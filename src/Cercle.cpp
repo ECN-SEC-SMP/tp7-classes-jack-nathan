@@ -27,10 +27,12 @@ Cercle::~Cercle() {
 float perimetre(void);
 float surface(void);
 
-std::ostream& operator<<(ostream &os, const Forme &forme) {
-    os << "Cercle(" << std::endl;
-    // os << "\t" << forme.pts;
-    // os << "Point(" << pts.x << ", " << pts.y << ")";
+float Cercle::getRayon(void) const {
+    return this->rayon;
+}
+
+std::ostream& operator<<(ostream &os, const Cercle &cercle) {
+    os << "Cercle:\n\t - Centré au" << cercle.getPoint() << "\n\t- Rayon" << cercle.getRayon();
 
     return os;
 }
