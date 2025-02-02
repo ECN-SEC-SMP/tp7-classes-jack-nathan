@@ -54,41 +54,41 @@ void test_listeFormesBoiteEnglobante(void);
 
 int main()
 {
-    // cout << "-- Tests de la classe Point --" << endl;
-    // test_pointConstructeur();
-    // test_pointTranslater();
-    // test_pointOperateurPlusEgale();
-    // test_pointOperateurCout();
+    cout << "-- Tests de la classe Point --" << endl;
+    test_pointConstructeur();
+    test_pointTranslater();
+    test_pointOperateurPlusEgale();
+    test_pointOperateurCout();
 
-    // cout << "-- Tests de la classe Rectangle --" << endl;
-    // test_rectangleConstructeur();
-    // test_rectangleSetLongueur();
-    // test_rectangleSetLargeur();
-    // test_rectanglePerimetre();
-    // test_rectangleSurface();
-    // test_rectangleOperateurCout();
+    cout << "-- Tests de la classe Rectangle --" << endl;
+    test_rectangleConstructeur();
+    test_rectangleSetLongueur();
+    test_rectangleSetLargeur();
+    test_rectanglePerimetre();
+    test_rectangleSurface();
+    test_rectangleOperateurCout();
 
-    // cout << "-- Tests de la classe Carre --" << endl;
-    // test_carreConstructeur();
-    // test_carreSetTaille();
-    // test_carreOperateurCout();
+    cout << "-- Tests de la classe Carre --" << endl;
+    test_carreConstructeur();
+    test_carreSetTaille();
+    test_carreOperateurCout();
 
-    // cout << "-- Tests de la classe Cercle --" << endl;
-    // test_carreConstructeur();
-    // test_carreSetTaille();
-    // test_carreOperateurCout();
+    cout << "-- Tests de la classe Cercle --" << endl;
+    test_carreConstructeur();
+    test_carreSetTaille();
+    test_carreOperateurCout();
 
-    // cout << "-- Tests de la classe cercle --" << endl;
-    // test_cercleConstructeur();
-    // test_cercleSetRayon();
-    // test_cerclePerimetre();
-    // test_cercleSurface();
-    // test_cercleOperateurCout();
+    cout << "-- Tests de la classe cercle --" << endl;
+    test_cercleConstructeur();
+    test_cercleSetRayon();
+    test_cerclePerimetre();
+    test_cercleSurface();
+    test_cercleOperateurCout();
 
-    // cout << "-- Tests liste de formes --" << endl;
-    // test_listeFormesConstructeur();
-    // test_listeFormesSurfaceTotal();
-    // test_listeFormesBoiteEnglobante();
+    cout << "-- Tests liste de formes --" << endl;
+    test_listeFormesConstructeur();
+    test_listeFormesSurfaceTotal();
+    test_listeFormesBoiteEnglobante();
     return 0;
 }
 
