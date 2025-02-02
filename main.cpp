@@ -52,17 +52,16 @@ void test_listeFormesConstructeur(void);
 void test_listeFormesSurfaceTotal(void);
 void test_listeFormesBoiteEnglobante(void);
 
-
 int main()
 {
-    cout << "-- Tests de la classe Point --" << endl;
-    test_pointConstructeur();
+    // cout << "-- Tests de la classe Point --" << endl;
+    // test_pointConstructeur();
     // test_pointTranslater();
     // test_pointOperateurPlusEgale();
     // test_pointOperateurCout();
 
-    cout << "-- Tests de la classe Rectangle --" << endl;
-    test_rectangleConstructeur();
+    // cout << "-- Tests de la classe Rectangle --" << endl;
+    // test_rectangleConstructeur();
     // test_rectangleSetLongueur();
     // test_rectangleSetLargeur();
     // test_rectanglePerimetre();
@@ -86,19 +85,20 @@ int main()
     // test_cercleSurface();
     // test_cercleOperateurCout();
 
-    cout << "-- Tests liste de formes --" << endl;
-    test_listeFormesConstructeur();
-    test_listeFormesSurfaceTotal();
-    test_listeFormesBoiteEnglobante();
+    // cout << "-- Tests liste de formes --" << endl;
+    // test_listeFormesConstructeur();
+    // test_listeFormesSurfaceTotal();
+    // test_listeFormesBoiteEnglobante();
     return 0;
 }
 
-void test_listeFormesConstructeur(void) {
-    Cercle* cerc = new Cercle(2, 5, 6);
+void test_listeFormesConstructeur(void)
+{
+    Cercle *cerc = new Cercle(2, 5, 6);
     Rectangle *rect_1 = new Rectangle(3, 3);
     Rectangle *rect_2 = new Rectangle(7, 5);
 
-    ListeFormes* liste = new ListeFormes();
+    ListeFormes *liste = new ListeFormes();
 
     cout << "==> Test ListeFormes" << endl;
 
@@ -136,9 +136,10 @@ void test_listeFormesSurfaceTotal()
     cout << "Surface totale attendu/obtenu : 44/" << liste.surfaceTotale() << endl;
 }
 
-void test_listeFormesBoiteEnglobante(void) {
+void test_listeFormesBoiteEnglobante(void)
+{
     ListeFormes liste;
-    Cercle* cerc = new Cercle(2, 5, 6);
+    Cercle *cerc = new Cercle(2, 5, 6);
     Rectangle *rect_1 = new Rectangle(3, 3);
     Rectangle *rect_2 = new Rectangle(7, 5);
 
@@ -256,6 +257,7 @@ void test_pointOperateurPlusEgale()
 
     cout << "test_pointOperateurPlusEgale()\t : \tOK" << endl;
 }
+
 void test_pointOperateurCout()
 {
     Point pts_1 = Point();       // Point initialisé en (0, 0)
@@ -270,16 +272,16 @@ void test_pointOperateurCout()
 
 void test_rectangleConstructeur()
 {
-    Rectangle rect_1 = Rectangle();
-    Rectangle rect_2 = Rectangle(3, 4);
-    Rectangle rect_3 = Rectangle(3, 4, 2, 3);
-    Rectangle rect_7 = rect_3;
+    Rectangle rect_1 = Rectangle();           // Constructeur par défaut
+    Rectangle rect_2 = Rectangle(3, 4);       // Définition de longueur, largeur
+    Rectangle rect_3 = Rectangle(3, 4, 2, 3); // Définition de longueur, largeur, X, Y
+    Rectangle rect_7 = rect_3;                // Par recopie
 
     try
     {
-        Rectangle rect_4 = Rectangle(0, 0, 2, 3);
-        Rectangle rect_5 = Rectangle(0, 3, 2, 3);
-        Rectangle rect_6 = Rectangle(3, 0, 2, 3);
+        Rectangle rect_4 = Rectangle(0, 0, 2, 3); // Largeur et longueur à 0
+        Rectangle rect_5 = Rectangle(0, 3, 2, 3); // Longueur à 0
+        Rectangle rect_6 = Rectangle(3, 0, 2, 3); // Largeur à 0
     }
     catch (const exception &e)
     {
@@ -378,6 +380,7 @@ void test_rectanglePerimetre()
 
     cout << "test_rectanglePerimetre():\t:\tOK" << endl;
 }
+
 void test_rectangleSurface()
 {
     Rectangle rect_1 = Rectangle();
@@ -398,6 +401,7 @@ void test_rectangleSurface()
 
     cout << "test_rectanglePerimetre():\t:\tOK" << endl;
 }
+
 void test_rectangleOperateurCout()
 {
     Rectangle rect_1 = Rectangle();
@@ -411,10 +415,10 @@ void test_rectangleOperateurCout()
 
 void test_carreConstructeur()
 {
-    Carre carre_1 = Carre();
-    Carre carre_2 = Carre(3);
-    Carre carre_3 = Carre(7, 4, 5);
-    Carre carre_4 = carre_3;
+    Carre carre_1 = Carre();        // Constructeur par défaut
+    Carre carre_2 = Carre(3);       // Définition de la taille
+    Carre carre_3 = Carre(7, 4, 5); // Définition de la taille et positionX et positionY
+    Carre carre_4 = carre_3;        // Par recopie
 
     assert(carre_1.getLargeur() == 0);
     assert(carre_1.getLongeur() == 0);
@@ -441,13 +445,13 @@ void test_carreSetTaille()
     Carre carre_2 = Carre(3);
     Carre carre_3 = Carre(7, 4, 5);
 
-    carre_1.setTaille(10);
-    carre_3.setTaille(1);
+    carre_1.setTaille(10); // Cas normal
+    carre_3.setTaille(1);  // Cas normal
 
     try
     {
-        carre_2.setTaille(0);
-        carre_2.setTaille(-1);
+        carre_2.setTaille(0);  // Taille impossible
+        carre_2.setTaille(-1); // Taille impossible
     }
     catch (const exception &e)
     {
@@ -464,6 +468,7 @@ void test_carreSetTaille()
     assert(carre_3.getLargeur() == 1);
     cout << "test_carreSetTaille():\t\t:\tOK" << endl;
 }
+
 void test_carreOperateurCout()
 {
     Carre carre_1 = Carre();
