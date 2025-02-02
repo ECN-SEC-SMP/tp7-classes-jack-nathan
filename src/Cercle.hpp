@@ -20,6 +20,7 @@ public:
 
     float perimetre(void);
     float surface(void);
+    void limites(float* xMin, float* xMax, float* yMin, float* yMax);
 
     friend ostream &operator<<(ostream &os, const Cercle &forme);
 };

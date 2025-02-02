@@ -93,6 +93,14 @@ float Rectangle::surface()
 
     return this->largeur * this->longueur;
 }
+
+void Rectangle::limites(float* xMin, float* xMax, float* yMin, float* yMax) {
+    *xMin = this->getPoint()->getX() - this->longueur;
+    *xMax = this->getPoint()->getX() + this->longueur;
+    *yMin = this->getPoint()->getY() - this->largeur;
+    *yMax = this->getPoint()->getY() + this->largeur;
+}
+
 ostream &operator<<(ostream &os, const Rectangle &rect)
 {
     os << "Rectangle:\n\t- Centré au " << *rect.getPoint() << "\n\t- Longueur " << rect.longueur << "\n\t- Largeur " << rect.largeur;

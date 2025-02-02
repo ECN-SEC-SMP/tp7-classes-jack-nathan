@@ -62,6 +62,13 @@ float Cercle::surface(void)
     return round((M_PI * this->rayon * this->rayon) * 100) / 100;
 }
 
+void Cercle::limites(float* xMin, float* xMax, float* yMin, float* yMax) {
+    *xMin = this->getPoint()->getX() - this->rayon;
+    *xMax = this->getPoint()->getX() + this->rayon;
+    *yMin = this->getPoint()->getY() - this->rayon;
+    *yMax = this->getPoint()->getY() + this->rayon;
+}
+
 ostream &operator<<(ostream &os, const Cercle &cercle)
 {
     os << "Cercle:\n\t- Centré au " << *cercle.getPoint() << "\n\t- Rayon " << cercle.rayon;

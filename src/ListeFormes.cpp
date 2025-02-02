@@ -36,6 +36,48 @@ unsigned int ListeFormes::surfaceTotale(void) {
     return surfaceTotal;
 }
 
-Rectangle ListeFormes::getBox(void) {
+Rectangle ListeFormes::getBox(Rectangle* box) {
+    /**
+     * Pour calculer la boite qui englobe toutes les formes, 
+     * On observe quelle forme s'étend le plus sur les quatres directions
+     * 
+     */
+    float xMin, xMax, yMin, yMax;
+    float xMin_tmp, xMax_tmp, yMin_tmp, yMax_tmp;
+    
+    float longueur, largeur, centreX, centreY;
 
+    Rectangle ret_box;
+
+    this->liste.at(0)->limites(&xMin, &xMax, &yMin, &yMax);
+
+    for (unsigned int i = 1; i < this->liste.size(); i++) {
+        this->liste.at(i)->limites(&xMin_tmp, &xMax_tmp, &yMin_tmp, &yMax_tmp);
+
+        if (xMin_tmp < xMin) {
+            xMin = xMin_tmp;
+        }
+        if (xMax_tmp > xMax) {
+            xMax = xMax_tmp;
+        }
+        if (yMin_tmp < yMin) {
+            yMin = yMin_tmp;
+        }
+        if (yMax_tmp > yMax) {
+            yMax = yMax_tmp;
+        }
+    }
+
+
+    longueur = xMax - xMin;
+    largeur = yMax - yMin;
+    centreX = xMin + (longueur / 2);
+    centreY = yMin + (largeur / 2);
+
+    // Create box
+    ret_box = Rectangle(longueur, largeur);
+    ret_box.getPoint()->setX(centreX);
+    ret_box.getPoint()->setY(centreY);
+
+    return ret_box;
 }

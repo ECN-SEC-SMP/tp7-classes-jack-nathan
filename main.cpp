@@ -50,18 +50,19 @@ void test_cercleOperateurCout(void);
 // Test ListeFormes
 void test_listeFormesConstructeur(void);
 void test_listeFormesSurfaceTotal(void);
+void test_listeFormesBoiteEnglobante(void);
 
 
 int main()
 {
-    // cout << "-- Tests de la classe Point --" << endl;
-    // test_pointConstructeur();
+    cout << "-- Tests de la classe Point --" << endl;
+    test_pointConstructeur();
     // test_pointTranslater();
     // test_pointOperateurPlusEgale();
     // test_pointOperateurCout();
 
-    // cout << "-- Tests de la classe Rectangle --" << endl;
-    // test_rectangleConstructeur();
+    cout << "-- Tests de la classe Rectangle --" << endl;
+    test_rectangleConstructeur();
     // test_rectangleSetLongueur();
     // test_rectangleSetLargeur();
     // test_rectanglePerimetre();
@@ -88,6 +89,7 @@ int main()
     cout << "-- Tests liste de formes --" << endl;
     test_listeFormesConstructeur();
     test_listeFormesSurfaceTotal();
+    test_listeFormesBoiteEnglobante();
     return 0;
 }
 
@@ -132,6 +134,45 @@ void test_listeFormesSurfaceTotal()
 
     assert(liste.surfaceTotale() == 44);
     cout << "Surface totale attendu/obtenu : 44/" << liste.surfaceTotale() << endl;
+}
+
+void test_listeFormesBoiteEnglobante(void) {
+    ListeFormes liste;
+    Cercle* cerc = new Cercle(2, 5, 6);
+    Rectangle *rect_1 = new Rectangle(3, 3);
+    Rectangle *rect_2 = new Rectangle(7, 5);
+
+    Rectangle box;
+
+    float xMin, xMax, yMin, yMax;
+
+    liste.add(cerc);
+    liste.add(rect_1);
+    liste.add(rect_2);
+
+    cout << "==> Test boite englobante" << endl;
+
+    liste.at(0)->limites(&xMin, &xMax, &yMin, &yMax);
+    cout << *cerc << endl;
+    cout << "Limites (xmin, xmax, ymin, ymax) : " << xMin << ", " << xMax << ", " << yMin << ", " << yMax << endl;
+    liste.at(1)->limites(&xMin, &xMax, &yMin, &yMax);
+    cout << *rect_1 << endl;
+    cout << "Limites (xmin, xmax, ymin, ymax) : " << xMin << ", " << xMax << ", " << yMin << ", " << yMax << endl;
+    liste.at(2)->limites(&xMin, &xMax, &yMin, &yMax);
+    cout << *rect_2 << endl;
+    cout << "Limites (xmin, xmax, ymin, ymax) : " << xMin << ", " << xMax << ", " << yMin << ", " << yMax << endl;
+
+    liste.getBox(&box);
+    cout << "Boite englobante point: " << endl;
+    cout << box.getPoint() << endl;
+    cout << "Boite englobante: " << endl;
+    cout << box << endl;
+    box.limites(&xMin, &xMax, &yMin, &yMax);
+    cout << "Limites (xmin, xmax, ymin, ymax) : " << xMin << ", " << xMax << ", " << yMin << ", " << yMax << endl;
+
+    delete cerc;
+    delete rect_1;
+    delete rect_2;
 }
 
 void test_pointConstructeur()

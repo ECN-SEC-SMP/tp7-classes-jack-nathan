@@ -17,6 +17,7 @@ public:
     Point* getPoint() const;
     virtual float perimetre(void) = 0;
     virtual float surface(void) = 0;
+    virtual void limites(float* xMin, float* xMax, float* yMin, float* yMax) = 0;
 
     // Surcharge opéateurs
     Forme &operator+=(const Point &A);

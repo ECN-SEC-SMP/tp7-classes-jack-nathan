@@ -20,6 +20,7 @@ public:
     void setLargeur(float largeur);
     float perimetre();
     float surface();
+    void limites(float* xMin, float* xMax, float* yMin, float* yMax);
     friend ostream &operator<<(ostream &os, const Rectangle &forme);
 };
 
