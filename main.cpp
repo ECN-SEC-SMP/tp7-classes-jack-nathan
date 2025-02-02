@@ -47,15 +47,13 @@ void test_cerclePerimetre(void);
 void test_cercleSurface(void);
 void test_cercleOperateurCout(void);
 
-// Test des fonctions sur un vecteurs
-void test_surfaceTotal(void);
-
 // Test ListeFormes
-void test_listeFormes(void);
+void test_listeFormesConstructeur(void);
+void test_listeFormesSurfaceTotal(void);
+
 
 int main()
 {
-    test_listeFormes();
     // cout << "-- Tests de la classe Point --" << endl;
     // test_pointConstructeur();
     // test_pointTranslater();
@@ -87,12 +85,13 @@ int main()
     // test_cercleSurface();
     // test_cercleOperateurCout();
 
-    // cout << "-- Tests liste de formes --" << endl;
-    // test_surfaceTotal();
+    cout << "-- Tests liste de formes --" << endl;
+    test_listeFormesConstructeur();
+    test_listeFormesSurfaceTotal();
     return 0;
 }
 
-void test_listeFormes(void) {
+void test_listeFormesConstructeur(void) {
     Cercle* cerc = new Cercle(2, 5, 6);
     Rectangle *rect_1 = new Rectangle(3, 3);
     Rectangle *rect_2 = new Rectangle(7, 5);
@@ -105,16 +104,34 @@ void test_listeFormes(void) {
 
     cout << "Ajout cercle" << endl;
     liste->add(cerc);
+    assert(liste->length() == 1);
     cout << "Taille avec 1 cercle : " << liste->length() << endl;
     cout << "Surface Cercle : " << liste->at(0)->surface() << endl;
 
     cout << "Ajout 2 rectangles" << endl;
     liste->add(rect_1);
     liste->add(rect_2);
+    assert(liste->length() == 3);
     cout << "Nouvelle taille de la liste : " << liste->length() << endl;
     cout << "Perimetre du rectangle(3, 3) : " << liste->at(1)->perimetre() << endl;
 
     cout << "Fin test ListeFormes" << endl;
+}
+
+void test_listeFormesSurfaceTotal()
+{
+    ListeFormes liste;
+    Rectangle *rect_2 = new Rectangle(3, 3);
+    Rectangle *rect_3 = new Rectangle(7, 5);
+
+    cout << "==> Test surface totale" << endl;
+    cout << "Ajout rectangles (3, 3) et (7, 5)" << endl;
+
+    liste.add(rect_2);
+    liste.add(rect_3);
+
+    assert(liste.surfaceTotale() == 44);
+    cout << "Surface totale attendu/obtenu : 44/" << liste.surfaceTotale() << endl;
 }
 
 void test_pointConstructeur()
@@ -544,18 +561,4 @@ void test_cercleOperateurCout()
     cout << "Surcharge opérateur <<" << endl;
     cout << cercle_1 << endl;
     cout << cercle_2 << endl;
-}
-
-void test_surfaceTotal()
-{
-
-    vector<Forme *> vec = vector<Forme *>();
-    Rectangle *rect_2 = new Rectangle(3, 3);
-    Rectangle *rect_3 = new Rectangle(7, 5);
-
-    vec.push_back(rect_2);
-    vec.push_back(rect_3);
-
-    assert(surfaceTotal(vec) == 44);
-    cout << "GG" << endl;
 }

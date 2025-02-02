@@ -25,3 +25,17 @@ Forme* ListeFormes::at(unsigned int index) {
 unsigned int ListeFormes::length(void) {
     return this->liste.size();
 }
+
+unsigned int ListeFormes::surfaceTotale(void) {
+    int surfaceTotal = 0;
+    for (Forme *forme : this->liste)
+    {
+        surfaceTotal += forme->surface();
+    }
+
+    return surfaceTotal;
+}
+
+Rectangle ListeFormes::getBox(void) {
+
+}

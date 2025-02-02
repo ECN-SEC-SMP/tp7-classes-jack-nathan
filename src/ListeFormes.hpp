@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Forme.hpp"
+#include "Rectangle.hpp"
 
 class ListeFormes
 {
@@ -18,6 +19,8 @@ public:
     unsigned int length(void);
     void add(Forme* forme);
     Forme* at(unsigned int index);
+    unsigned int surfaceTotale(void);
+    Rectangle getBox(void);
 
 };
 
