@@ -118,6 +118,10 @@ void test_listeFormesConstructeur(void)
     cout << "Perimetre du rectangle(3, 3) : " << liste->at(1)->perimetre() << endl;
 
     cout << "Fin test ListeFormes" << endl;
+    delete cerc;
+    delete rect_1;
+    delete rect_2;
+    delete liste;
 }
 
 void test_listeFormesSurfaceTotal()
@@ -134,6 +138,9 @@ void test_listeFormesSurfaceTotal()
 
     assert(liste.surfaceTotale() == 44);
     cout << "Surface totale attendu/obtenu : 44/" << liste.surfaceTotale() << endl;
+
+    delete rect_2;
+    delete rect_3;
 }
 
 void test_listeFormesBoiteEnglobante(void)
