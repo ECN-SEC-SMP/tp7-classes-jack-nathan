@@ -35,10 +35,14 @@ compilCarre : compilRectangle
 	@echo Compilation Carré
 	$(GPP) -c $(SRC)/Carre.cpp -o $(BIN)/Carre.o
 
+compilListeFormes : compilForme
+	@echo Compilation ListeFormes
+	$(GPP) -c $(SRC)/ListeFormes.cpp -o $(BIN)/ListeFormes.o $(BIN)/Rectangle.o $(BIN)/Carre.o
+
 # La cible "compilMain" est exécutée en tapant la commande "make compilMain"
-compilMain : deleteAll compilCarre compilCercle
+compilMain : deleteAll compilCarre compilCercle compilListeFormes
 	@echo Compilation de main
-	$(GPP) ./main.cpp $(BIN)/Cercle.o $(BIN)/Carre.o $(BIN)/Rectangle.o $(BIN)/Forme.o $(BIN)/Point.o -o $(BIN)/main.bin
+	$(GPP) ./main.cpp $(BIN)/ListeFormes.o $(BIN)/Cercle.o $(BIN)/Carre.o $(BIN)/Rectangle.o $(BIN)/Forme.o $(BIN)/Point.o -o $(BIN)/main.bin
 
 # La cible "launchMain" est exécutée en tapant la commande "make launchMain"
 launchMain :

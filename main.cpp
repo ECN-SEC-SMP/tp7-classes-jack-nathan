@@ -6,6 +6,7 @@
 #include "src/Carre.hpp"
 #include "src/Rectangle.hpp"
 #include "src/Cercle.hpp"
+#include "src/ListeFormes.hpp"
 
 using namespace std;
 
@@ -49,8 +50,12 @@ void test_cercleOperateurCout(void);
 // Test des fonctions sur un vecteurs
 void test_surfaceTotal(void);
 
+// Test ListeFormes
+void test_listeFormes(void);
+
 int main()
 {
+    test_listeFormes();
     // cout << "-- Tests de la classe Point --" << endl;
     // test_pointConstructeur();
     // test_pointTranslater();
@@ -85,6 +90,31 @@ int main()
     // cout << "-- Tests liste de formes --" << endl;
     // test_surfaceTotal();
     return 0;
+}
+
+void test_listeFormes(void) {
+    Cercle* cerc = new Cercle(2, 5, 6);
+    Rectangle *rect_1 = new Rectangle(3, 3);
+    Rectangle *rect_2 = new Rectangle(7, 5);
+
+    ListeFormes* liste = new ListeFormes();
+
+    cout << "==> Test ListeFormes" << endl;
+
+    cout << "Taille liste vide : " << liste->length() << endl;
+
+    cout << "Ajout cercle" << endl;
+    liste->add(cerc);
+    cout << "Taille avec 1 cercle : " << liste->length() << endl;
+    cout << "Surface Cercle : " << liste->at(0)->surface() << endl;
+
+    cout << "Ajout 2 rectangles" << endl;
+    liste->add(rect_1);
+    liste->add(rect_2);
+    cout << "Nouvelle taille de la liste : " << liste->length() << endl;
+    cout << "Perimetre du rectangle(3, 3) : " << liste->at(1)->perimetre() << endl;
+
+    cout << "Fin test ListeFormes" << endl;
 }
 
 void test_pointConstructeur()
