@@ -165,12 +165,11 @@ void test_listeFormesBoiteEnglobante(void)
 
     liste.getBox(&box);
     cout << "Boite englobante point: " << endl;
-    cout << box.getPoint() << endl;
+    cout << *box.getPoint() << endl;
     cout << "Boite englobante: " << endl;
     cout << box << endl;
     box.limites(&xMin, &xMax, &yMin, &yMax);
     cout << "Limites (xmin, xmax, ymin, ymax) : " << xMin << ", " << xMax << ", " << yMin << ", " << yMax << endl;
-
     delete cerc;
     delete rect_1;
     delete rect_2;

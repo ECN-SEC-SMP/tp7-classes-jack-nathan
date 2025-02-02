@@ -20,7 +20,7 @@ public:
     void add(Forme* forme);
     Forme* at(unsigned int index);
     unsigned int surfaceTotale(void);
-    Rectangle getBox(Rectangle* box);
+    void getBox(Rectangle* box);
 
 };
 
